@@ -15,7 +15,7 @@ class JokeTableSeeder extends Seeder
     public function run()
     {
         //
-        \App\Models\Joke::factory(20)->create();
+        \App\Models\Joke::factory(100)->create();
 
     }
 }

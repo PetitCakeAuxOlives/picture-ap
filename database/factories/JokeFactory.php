@@ -23,7 +23,7 @@ class JokeFactory extends Factory
             'image' => $this->faker->imageUrl(640, 480, $this->faker->words(2,true),true),
             'title' => $this->faker->sentence(10),
             'text' => $this->faker->text(),
-            'user' => $this->faker->name(),
+            'user' => $this->faker->name()
         ];
     }
 }

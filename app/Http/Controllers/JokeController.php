@@ -12,9 +12,12 @@ class JokeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return Joke::all();
+        $page = $request->has('page') ? $request->get('page') : 1;
+        $limit = $request->has('limit') ? $request->get('limit') : 100;
+        $offset = ($page-1)*$limit;
+        return Joke::orderBy('created_at', 'Asc')->limit($limit)->offset($offset)->get();
     }
 
     /**
@@ -25,7 +28,9 @@ class JokeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if(Joke::create($request -> all() )){
+            return 'New Joke added successfully';
+        };
     }
 
     /**
@@ -36,7 +41,7 @@ class JokeController extends Controller
      */
     public function show(Joke $joke)
     {
-        //
+        return $joke;
     }
 
     /**
@@ -48,7 +53,9 @@ class JokeController extends Controller
      */
     public function update(Request $request, Joke $joke)
     {
-        //
+        if($joke->update($request -> all() )){
+            return 'Joke updated successfully';
+        }
     }
 
     /**
@@ -59,6 +66,8 @@ class JokeController extends Controller
      */
     public function destroy(Joke $joke)
     {
-        //
+        if($joke->delete()){
+            return 'Joke deleted successfully';
+        }
     }
 }

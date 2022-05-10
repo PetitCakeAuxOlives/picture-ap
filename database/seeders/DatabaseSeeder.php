@@ -14,8 +14,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\User::factory(10)->create();
-        $this->call(PictureTableSeeder::class);
+        // \App\Models\User::factory(10)->create();
+       // $this->call(PictureTableSeeder::class);
         $this->call(JokeTableSeeder::class);
     }
 }
